@@ -38,7 +38,8 @@ class AuthorsList extends Component {
         <h3>Authors</h3>
         <SearchBar onChange={this.setQuery} />
         <div className="row">
-          <AddAuthorCard />
+          {this.props.user && <AddAuthorCard />}
+          {/* if the user is null or false it won't add author */}
           {authorCards}
         </div>
       </div>
@@ -46,9 +47,10 @@ class AuthorsList extends Component {
   }
 }
 
-const mapStateToProps = ({ authors }) => ({
+const mapStateToProps = ({ authors, user }) => ({
   authors,
-  loading: !authors.length
+  loading: !authors.length,
+  user
 });
 
 export default connect(mapStateToProps)(AuthorsList);

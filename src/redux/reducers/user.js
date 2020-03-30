@@ -1,10 +1,16 @@
-import {} from "../actions/actionTypes";
+import { SET_CURRENT_USER } from "../actions/actionTypes";
 
-const initialState = null;
-
+const initialState = {
+  user: null
+};
+//set state as user object
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    // complete me
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        user: action.payload
+      };
     default:
       return state;
   }
